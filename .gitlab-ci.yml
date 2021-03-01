@@ -1,18 +1,21 @@
 image: mcr.microsoft.com/dotnet/core/sdk:3.1
 
 stages:
-    - build
-    - test
-
-before_script:
-    - "cd DevOpsAssessment"
+  - build
+  - test
+  - deploy
+  
+variables:
+  project: "DevOpsAssessment"
 
 build:
-    stage: build
-    script: 
-        - "dotnet build"
+  stage: build
+  script:
+    
+    - "dotnet build ./DevOpsAssessment/DevOpsAssessment.sln"
 
 test:
-    stage: test
-    script: 
-        - "dotnet test"
+  stage: test
+  script:
+ 
+    - "dotnet test ./DevOpsAssessment/DevOpsAssessment.sln"
